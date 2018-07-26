@@ -22,5 +22,11 @@ public class PrayerTime {
     public String monthgrego;
     public String yeargrego;
 
+    //malay prayer time
+    public String code;
+    public String origin;
+    public String place;
+
+
 
 }
