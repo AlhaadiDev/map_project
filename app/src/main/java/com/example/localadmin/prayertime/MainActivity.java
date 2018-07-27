@@ -253,7 +253,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         gMap = googleMap;
-        googleMap.setMyLocationEnabled(true);
+        /*In Xioami phone can't run?*/
+//        googleMap.setMyLocationEnabled(true);
         gMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
         getLocation();
@@ -314,7 +315,23 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return false;
+
+                int id = item.getItemId();
+
+                if (id == R.id.nav_Tconditon) {
+                    Intent compass = new Intent(MainActivity.this, CompassActivity.class);
+                    startActivity(compass);
+                } else if (id == R.id.nav_privacy_policy) {
+
+                } else if (id == R.id.nav_faqs) {
+
+                } else if (id == R.id.nav_log_out) {
+
+                }
+
+                DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
             }
         });
     }

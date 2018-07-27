@@ -1,5 +1,6 @@
 package com.example.localadmin.prayertime;
 
+import android.annotation.SuppressLint;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -7,15 +8,18 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CompassActivity extends AppCompatActivity implements SensorEventListener {
 
     private ImageView imgCompass;
     private TextView txtheading;
+    private LinearLayout imgback;
     private float currentDegree = 0f;
     private char tmpdegree = 0x00B0;
     private SensorManager mSensorManager;
@@ -24,10 +28,18 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.compass_activity);
-
+        imgback = findViewById(R.id.child_back);
         imgCompass = findViewById(R.id.img_compass);
         txtheading = findViewById(R.id.txt_heading);
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+
+        imgback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -43,6 +55,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         mSensorManager.unregisterListener(this);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         float degree = Math.round(sensorEvent.values[0]);

@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_Tconditon"
-            android:title="Terms &amp; Condition" />
+            android:title="Compass" />
         <item
             android:id="@+id/nav_privacy_policy"
             android:title="Privacy Policy" />
